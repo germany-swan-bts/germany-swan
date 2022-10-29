@@ -1,10 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator_app_flutter/resultpage.dart';
 import 'package:bmi_calculator_app_flutter/theame.dart';
+import 'dart:async';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class BmiPage extends StatefulWidget {
   @override
   _BmiPageState createState() => _BmiPageState();
+}
+
+class CommonWebView extends StatelessWidget {
+  String url;
+  CommonWebView(this.url);
+
+  final Completer<WebViewController> _controller =
+  Completer<WebViewController>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Flutter WebView example'),
+        ),
+        body: Builder(builder: (BuildContext context) {
+          return WebView(
+            initialUrl: url,
+            javascriptMode: JavascriptMode.unrestricted,
+            onWebViewCreated: (WebViewController webViewController) {
+              _controller.complete(webViewController);
+            },
+            navigationDelegate: (NavigationRequest request) {
+              if (request.url.startsWith('https://www.youtube.com/')) {
+                print('blocking navigation to $request}');
+                return NavigationDecision.prevent;
+              }
+              print('allowing navigation to $request');
+              return NavigationDecision.navigate;
+            },
+            onPageStarted: (String url) {
+              print('Page started loading: $url');
+            },
+            onPageFinished: (String url) {
+              print('Page finished loading: $url');
+            },
+            gestureNavigationEnabled: true,
+          );
+        }));
+  }
 }
 
 class _BmiPageState extends State<BmiPage> {
@@ -24,6 +66,13 @@ class _BmiPageState extends State<BmiPage> {
   //     throw 'Could not launch $url';
   //   }
   // }
+
+  inform() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => CommonWebView('https://buy.stripe.com/test_bIY28A98F42AaxWbII')));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,12 +107,25 @@ class _BmiPageState extends State<BmiPage> {
                       SizedBox(
                         height: 20.0,
                       ),
-                      Text('MALE', style: headlines)
+                      Text('天鵝堡專案', style: headlines)
                     ],
                   ),
                 ),
               ),
             ],
+          ),
+          InkWell(
+            onTap: () {
+              inform();
+            },
+            child: Container(
+              color: primaryButtonColor,
+              margin: EdgeInsets.only(top: 10.0),
+              height: MediaQuery.of(context).size.height * 0.1,
+              child: Center(
+                child: Text('買入場券！', style: primaryButtonStyle),
+              ),
+            ),
           ),
           InkWell(
             onTap: () {
@@ -74,7 +136,7 @@ class _BmiPageState extends State<BmiPage> {
               margin: EdgeInsets.only(top: 10.0),
               height: MediaQuery.of(context).size.height * 0.1,
               child: Center(
-                child: Text('買一張票', style: primaryButtonStyle),
+                child: Text('買車票！', style: primaryButtonStyle),
               ),
             ),
           ),

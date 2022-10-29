@@ -24,6 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_hooks: ^0.9.0
+  http: ^0.13.4
+  webview_flutter: ^3.0.4
   # we no longer need to import intl explicitly, as bmi already depends on it
   bmi:
     path: packages/bmi
