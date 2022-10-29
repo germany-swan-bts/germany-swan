@@ -28,6 +28,11 @@ class Result extends StatefulWidget {
 
  final int height;
  final int weight;
+ Map<String, String> map = {
+   'D34F':'From Munich to Fussen | Depart->08:07 & Arrived->10:07',
+   'GH4D':'From Munich to Fussen | Depart->08:20 & Arrived->10:41',
+   'JFL9':'From Munich to Fussen | Depart->09:36 & Arrived->11:41',
+   'HL6V':'From Munich to Fussen | Depart->10:21 & Arrived->12:41'};
 
   Result(this.height,this.weight);
 
@@ -61,6 +66,8 @@ class _ResultState extends State<Result> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Text("We can only buy ticket tmr"),
+                Text("From: Munich"),
+                Text("To: Fussen"),
                 Image.asset(
                   'images/train_schedule.jpg',
                   height: 500.0,
