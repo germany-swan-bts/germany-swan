@@ -128,9 +128,13 @@ class _BmiPageState extends State<BmiPage> {
             ),
           ),
           InkWell(
-            onTap: () {
-              // launchURL();
-            },
+            onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ResultPage(
+                      height: height,
+                      weight: weight,
+                    ))),
             child: Container(
               color: primaryButtonColor,
               margin: EdgeInsets.only(top: 10.0),
