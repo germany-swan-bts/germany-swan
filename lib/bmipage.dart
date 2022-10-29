@@ -17,8 +17,9 @@ class _BmiPageState extends State<BmiPage> {
   double maxHeight = 220;
   double minHeight = 120;
 
-  launchURL(String url) async {
-    //String url = 'https://buy.stripe.com/test_bIY28A98F42AaxWbII';
+  launchURL() async {
+    String url = 'https://buy.stripe.com/test_bIY28A98F42AaxWbII';
+    //const url = 'https://google.com';
     if (await canLaunch(url)) {
       await launch(url, forceWebView: true);
     } else {
@@ -68,8 +69,7 @@ class _BmiPageState extends State<BmiPage> {
           ),
           InkWell(
             onTap: () {
-              const url = 'https://google.com';
-              launchURL(url);
+              launchURL();
             },
             child: Container(
               color: primaryButtonColor,
