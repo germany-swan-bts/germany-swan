@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator_app_flutter/resultpage.dart';
 import 'package:bmi_calculator_app_flutter/theame.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'dart:html' as html;
 
 class BmiPage extends StatefulWidget {
   @override
@@ -14,6 +16,15 @@ class _BmiPageState extends State<BmiPage> {
   int height = 180;
   double maxHeight = 220;
   double minHeight = 120;
+
+  launchURL(String url) async {
+    //String url = 'https://buy.stripe.com/test_bIY28A98F42AaxWbII';
+    if (await canLaunch(url)) {
+      await launch(url, forceWebView: true);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,19 +67,16 @@ class _BmiPageState extends State<BmiPage> {
             ],
           ),
           InkWell(
-            onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => ResultPage(
-                          height: height,
-                          weight: weight,
-                        ))),
+            onTap: () {
+              const url = 'https://google.com';
+              launchURL(url);
+            },
             child: Container(
               color: primaryButtonColor,
               margin: EdgeInsets.only(top: 10.0),
               height: MediaQuery.of(context).size.height * 0.1,
               child: Center(
-                child: Text('Purchase Ticket', style: primaryButtonStyle),
+                child: Text('買一張票', style: primaryButtonStyle),
               ),
             ),
           ),
