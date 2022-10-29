@@ -48,8 +48,8 @@ class _ResultState extends State<Result> {
           child: Container(
             height: MediaQuery.of(context).size.height * 0.7,
             width: MediaQuery.of(context).size.width *0.9,
-            margin: EdgeInsets.all(20.0),
-            padding: EdgeInsets.all(20.0),
+            margin: EdgeInsets.all(0.0),
+            padding: EdgeInsets.all(0.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.0),
               color: primary
@@ -60,26 +60,32 @@ class _ResultState extends State<Result> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Text("$headline",style: headlines),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text('${bmiResult(this.widget.height, this.widget.weight)}', style: resultNumber),
+                Text("We can only buy ticket tmr"),
+                Image.asset(
+                  'images/train_schedule.jpg',
+                  height: 500.0,
+                  width: 500.0
                 ),
-                Column(
-                  children: <Widget>[
-                    Text('Normal BMI range:'),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text("18.5 - 25 kg/m",style: headlines,),
-                ),
-                  ],
-                ),
+                // Text("$headline",style: headlines),
+                // Padding(
+                //   padding: const EdgeInsets.all(10.0),
+                //   child: Text('${bmiResult(this.widget.height, this.widget.weight)}', style: resultNumber),
+                // ),
+                // Column(
+                //   children: <Widget>[
+                //     Text('Normal BMI range:'),
+                //     Padding(
+                //       padding: const EdgeInsets.all(8.0),
+                //       child: Text("18.5 - 25 kg/m",style: headlines,),
+                // ),
+                //   ],
+                // ),
                 
 
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text('$comment', style: headlines,),
-                )
+                // Padding(
+                //   padding: const EdgeInsets.all(8.0),
+                //   child: Text('$comment', style: headlines,),
+                // )
               ],
             ),
           ),        
@@ -92,7 +98,7 @@ class _ResultState extends State<Result> {
                 margin: EdgeInsets.only(top: 10.0),
                 height: MediaQuery.of(context).size.height * 0.1,
                 child: Center(
-                  child: Text('RE-CALCULATE', style: primaryButtonStyle),
+                  child: Text('Buy', style: primaryButtonStyle),
                   ),
              ),
            ),
@@ -105,10 +111,7 @@ class _ResultState extends State<Result> {
 var comment = '';
 var headline = '';
 bmiResult(h,w){
-  
-  
   double bmi = (w/(h*h))*10000;
-
   if(bmi<18.5){
     comment = "You are under Weight";
     headline = "UNDERWEIGHT";
