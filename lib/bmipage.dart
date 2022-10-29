@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator_app_flutter/resultpage.dart';
 import 'package:bmi_calculator_app_flutter/theame.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'dart:html' as html;
 
 class BmiPage extends StatefulWidget {
   @override
@@ -17,15 +15,15 @@ class _BmiPageState extends State<BmiPage> {
   double maxHeight = 220;
   double minHeight = 120;
 
-  launchURL() async {
-    String url = 'https://buy.stripe.com/test_bIY28A98F42AaxWbII';
-    //const url = 'https://google.com';
-    if (await canLaunch(url)) {
-      await launch(url, forceWebView: true);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
+  // launchURL() async {
+  //   String url = 'https://buy.stripe.com/test_bIY28A98F42AaxWbII';
+  //   //const url = 'https://google.com';
+  //   if (await canLaunch(url)) {
+  //     await launch(url, forceWebView: true);
+  //   } else {
+  //     throw 'Could not launch $url';
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +67,7 @@ class _BmiPageState extends State<BmiPage> {
           ),
           InkWell(
             onTap: () {
-              launchURL();
+              // launchURL();
             },
             child: Container(
               color: primaryButtonColor,
