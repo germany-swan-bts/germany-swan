@@ -91,7 +91,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: BmiPage()
+        body: inform()
+      //body: BmiPage()
       );
   }
 }
