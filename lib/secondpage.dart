@@ -44,31 +44,33 @@ class PageBody extends StatelessWidget {
               style: TextStyle(height:2, fontSize: 22, fontWeight: FontWeight.bold)
           ),
           Text('付款資訊： (808) 012898232422'),
-          Column(
+          Row (
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                ElevatedButton(
-                  child: Text('取消'),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => PlacePage()),);
-                  },
-                ),
+                Wrap (
+                    spacing: 20,
+                    children: <Widget>[
+                      ElevatedButton(
+                        child: Text('取消'),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => PlacePage()),);
+                        },
+                      ),
+                      ElevatedButton(
+                        child: Text('線上支付'),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CommonWebView('https://buy.stripe.com/test_dR614wckR1UsfSgbIJ')));
+                        },
+                      ),
+                  ]
+                )
               ]
           ),
-          Column(
-              children: <Widget>[
-                ElevatedButton(
-                  child: Text('線上支付'),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CommonWebView('https://buy.stripe.com/test_dR614wckR1UsfSgbIJ')));
-                  },
-                ),
-              ]
-          )
         ],
       ),
     );
