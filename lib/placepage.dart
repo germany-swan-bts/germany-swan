@@ -40,9 +40,9 @@ class HomePage extends StatelessWidget {
               fit: BoxFit.fill
           ),
           Text(
-              '你買票了沒 ???',
+              '從巴黎到聖米歇爾山，讓你直達不轉車 !!',
               textAlign: TextAlign.center,
-              style: TextStyle(height:2, fontSize: 25, fontWeight: FontWeight.bold)
+              style: TextStyle(height:2, fontSize: 22, fontWeight: FontWeight.bold)
           ),
           ListTile(
             title: Text(
@@ -58,8 +58,29 @@ class HomePage extends StatelessWidget {
           Text(
               '車票資訊',
               textAlign: TextAlign.center,
-              style: TextStyle(height:2, fontSize: 15, fontWeight: FontWeight.bold)
+              style: TextStyle(height:2, fontSize: 20, fontWeight: FontWeight.bold)
           ),
+          Text(
+              '巴黎 Paris Pont de Levallois → FlixBus 巴士 → 聖米歇爾山 Mont Saint-Michel',
+              textAlign: TextAlign.start,
+              style: TextStyle(height:1.5, fontSize: 15)
+          ),
+          Text(
+              '車程： 4.5小時',
+              textAlign: TextAlign.start,
+              style: TextStyle(height:1.5, fontSize: 15)
+          ),
+          Text(
+              '票價：€249.99',
+              textAlign: TextAlign.start,
+              style: TextStyle(height:1.5, fontSize: 15)
+          ),
+        Text(
+            '巴黎聖米歇爾山是法國最受歡迎的景點之一，1979年被聯合國教科文組織列入世界文化遺產，更因為魔戒一片而聲名大造，除了是電影觀光勝地之外，同時也是天主教的朝聖地！',
+            textAlign: TextAlign.start,
+            style: TextStyle(height:1.5, fontSize: 15)
+        ),
+          Text('付款資訊： (808) 012898232422'),
           Column(
               children: <Widget>[
                 ElevatedButton(
@@ -68,11 +89,24 @@ class HomePage extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => CommonWebView('https://buy.stripe.com/test_bIY28A98F42AaxWbII')));
+                            builder: (context) => CommonWebView('https://buy.stripe.com/test_dR614wckR1UsfSgbIJ')));
                   },
                 ),
               ]
           )
+          // Column(
+          //     children: <Widget>[
+          //       ElevatedButton(
+          //         child: Text('立刻購買'),
+          //         onPressed: () {
+          //           Navigator.push(
+          //               context,
+          //               MaterialPageRoute(
+          //                   builder: (context) => CommonWebView('https://buy.stripe.com/test_bIY28A98F42AaxWbII')));
+          //         },
+          //       ),
+          //     ]
+          // )
         ],
       ),
     );
