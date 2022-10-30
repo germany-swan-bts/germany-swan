@@ -88,25 +88,63 @@ class CommonWebView extends StatelessWidget {
           title: const Text('Payment Page'),
         ),
         body: Builder(builder: (BuildContext context) {
-          return WebView(
+
+
+          return Center(
+            child: Stack(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      child:             WebView(
             initialUrl: url,
-            javascriptMode: JavascriptMode.unrestricted,
-            navigationDelegate: (NavigationRequest request) {
-              if (request.url.startsWith('https://www.youtube.com/')) {
-                print('blocking navigation to $request}');
-                return NavigationDecision.prevent;
-              }
-              print('allowing navigation to $request');
-              return NavigationDecision.navigate;
-            },
-            onPageStarted: (String url) {
-              print('Page started loading: $url');
-            },
-            onPageFinished: (String url) {
-              print('Page finished loading: $url');
-            },
-            gestureNavigationEnabled: true,
+              javascriptMode: JavascriptMode.unrestricted,
+              navigationDelegate: (NavigationRequest request) {
+                if (request.url.startsWith('https://www.youtube.com/')) {
+                  print('blocking navigation to $request}');
+                  return NavigationDecision.prevent;
+                }
+                print('allowing navigation to $request');
+                return NavigationDecision.navigate;
+              },
+              onPageStarted: (String url) {
+                print('Page started loading: $url');
+              },
+              onPageFinished: (String url) {
+                print('Page finished loading: $url');
+              },
+              gestureNavigationEnabled: true,
+            ),
+                    ),
+                  ],
+                ),
+           Row (
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Wrap (
+                          spacing: 20,
+                          children: <Widget>[
+                            ElevatedButton(
+                              child: Text('線上支付'),
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => CommonWebView('https://buy.stripe.com/test_dR614wckR1UsfSgbIJ')));
+                              },
+                            ),
+                          ]
+                      )
+                    ]
+                ),
+
+                  ]
+
+            ),
+
           );
-        }));
+
+        }
+        ));
   }
 }
