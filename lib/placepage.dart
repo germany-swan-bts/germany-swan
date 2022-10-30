@@ -47,7 +47,7 @@ class PageBody extends StatelessWidget {
         //padding: const EdgeInsets.all(8),
         children: <Widget>[
           Image.asset(
-              'images/Castle.jpg',
+              'images/BTS.png',
               fit: BoxFit.fill,
           ),
           TextFormField(
