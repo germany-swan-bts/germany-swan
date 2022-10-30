@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'bmipage.dart';
+import 'placepage.dart';
  
 void main() => runApp(MyApp());
  
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: HomePage(),
+      home: PlacePage(),
       // routes: <String, WidgetBuilder>{
       //   '/': (context) => HomePage(),
       //   '/second': (context) => SecondApp()
