@@ -265,3 +265,105 @@ class GrailApiClient {
     return {"data": jsonDecode(utf8.decode(asyncResult.bodyBytes))};
   }
 }
+
+class G2RailSearchResponse{
+  List<Schedule> schedules;
+}
+
+class Schedule
+{
+  Railway railway;
+  bool loading;
+  List<Solution> solutions;
+}
+
+class Railway
+{
+  String code;
+}
+
+class Solution
+{
+  Location from;
+  Location to;
+  DateTime departure;
+  TimeInfo duration;
+  int transfer_times;
+  List<Section> sections;
+}
+
+class Location
+{
+  String code;
+  String name;
+  Uri help_url;
+}
+
+class TimeInfo
+{
+  int hour;
+  int minutes;
+}
+
+class Section
+{
+  String carrier_description;
+  String carrier_code;
+  List<Offer> offers;
+  List<Train> trains;
+}
+
+class Offer
+{
+  String code;
+  String description;
+  String ticket_type;
+  String seat_type;
+  String refund_type;
+  String change_type;
+  String confirm_again;
+  String detail;
+  Restriction restriction;
+  List<Service> services;
+}
+
+class Restriction
+{
+  String code;
+  String description;
+  String detail;
+}
+
+class Service
+{
+  String code;
+  String description;
+  String detail;
+  SeatInfo available;
+  Money price;
+  String booking_code;
+  String booking_type;
+}
+
+class SeatInfo
+{
+  int seats;
+}
+
+class Money
+{
+  String currency;
+  int cents;
+}
+
+class Train
+{
+  String number;
+  String seat_type;
+  Location from;
+  Location to;
+  DateTime departure;
+  DateTime arrival;
+  Uri help_url;
+  List<Location> stops;
+}
