@@ -31,6 +31,11 @@ class HomePage extends StatelessWidget {
       'images/Castle.jpg',
       fit: BoxFit.fill
     ),
+    Text(
+        '你買票了沒 ???',
+        textAlign: TextAlign.center,
+        style: TextStyle(height:2, fontSize: 25, fontWeight: FontWeight.bold)
+    ),
     ListTile(
       title: Text(
         '德國',
