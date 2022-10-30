@@ -53,8 +53,8 @@ class PageBody extends StatelessWidget {
           TextFormField(
             controller: refCodeController,
             decoration: const InputDecoration(
-              border: UnderlineInputBorder(),
-              labelText: '輸入：折扣碼',
+              border: OutlineInputBorder(),
+              hintText: '輸入：折扣碼',
             ),
           ),
           // Text(
