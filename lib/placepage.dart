@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator_app_flutter/theame.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'secondpage.dart';
 
 class PlacePage extends StatefulWidget {
   @override
@@ -19,12 +19,12 @@ class _PlacePageState extends State<PlacePage> {
               style: TextStyle(color: HexColor("ffffff")),
             ),
           ),
-          body: HomePage(),
+          body: PageBody(),
         ));
   }
 }
 
-class HomePage extends StatelessWidget {
+class PageBody extends StatelessWidget {
   // final String country;
   // HomePage(this.country);
 
@@ -75,12 +75,11 @@ class HomePage extends StatelessWidget {
               textAlign: TextAlign.start,
               style: TextStyle(height:1.5, fontSize: 15)
           ),
-        Text(
-            '巴黎聖米歇爾山是法國最受歡迎的景點之一，1979年被聯合國教科文組織列入世界文化遺產，更因為魔戒一片而聲名大造，除了是電影觀光勝地之外，同時也是天主教的朝聖地！',
-            textAlign: TextAlign.start,
-            style: TextStyle(height:1.5, fontSize: 15)
-        ),
-          Text('付款資訊： (808) 012898232422'),
+          Text(
+              '巴黎聖米歇爾山是法國最受歡迎的景點之一，1979年被聯合國教科文組織列入世界文化遺產，更因為魔戒一片而聲名大造，除了是電影觀光勝地之外，同時也是天主教的朝聖地！',
+              textAlign: TextAlign.start,
+              style: TextStyle(height:1.5, fontSize: 15)
+          ),
           Column(
               children: <Widget>[
                 ElevatedButton(
@@ -88,62 +87,14 @@ class HomePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => CommonWebView('https://buy.stripe.com/test_dR614wckR1UsfSgbIJ')));
+                        MaterialPageRoute(builder: (context) => SecondPage()),);
                   },
                 ),
               ]
-          )
-          // Column(
-          //     children: <Widget>[
-          //       ElevatedButton(
-          //         child: Text('立刻購買'),
-          //         onPressed: () {
-          //           Navigator.push(
-          //               context,
-          //               MaterialPageRoute(
-          //                   builder: (context) => CommonWebView('https://buy.stripe.com/test_bIY28A98F42AaxWbII')));
-          //         },
-          //       ),
-          //     ]
-          // )
+          ),
         ],
       ),
     );
   }
 }
 
-
-class CommonWebView extends StatelessWidget {
-  String url;
-  CommonWebView(this.url);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Payment Page'),
-        ),
-        body: Builder(builder: (BuildContext context) {
-          return WebView(
-            initialUrl: url,
-            javascriptMode: JavascriptMode.unrestricted,
-            navigationDelegate: (NavigationRequest request) {
-              if (request.url.startsWith('https://www.youtube.com/')) {
-                print('blocking navigation to $request}');
-                return NavigationDecision.prevent;
-              }
-              print('allowing navigation to $request');
-              return NavigationDecision.navigate;
-            },
-            onPageStarted: (String url) {
-              print('Page started loading: $url');
-            },
-            onPageFinished: (String url) {
-              print('Page finished loading: $url');
-            },
-            gestureNavigationEnabled: true,
-          );
-        }));
-  }
-}
