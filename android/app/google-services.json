@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "459942914328",
+    "project_id": "my-dts-database",
+    "storage_bucket": "my-dts-database.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459942914328:android:36619f8480714c3da3966d",
+        "android_client_info": {
+          "package_name": "com.bts.germanyswan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459942914328-o4qneosgtruivbd82thj6cs5k8d3mdmd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDK4aeQadhJf7doTUDf0BTGhDAVrjx3Cs0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459942914328-o4qneosgtruivbd82thj6cs5k8d3mdmd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
