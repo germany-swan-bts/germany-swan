@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator_app_flutter/theame.dart';
 import 'secondpage.dart';
+import 'seconddiscountpage.dart';
 
 class PlacePage extends StatefulWidget {
   @override
@@ -88,6 +89,18 @@ class PageBody extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => SecondPage()),);
+                  },
+                ),
+              ]
+          ),
+          Column(
+              children: <Widget>[
+                ElevatedButton(
+                  child: Text('折扣立刻購買'),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SecondDiscountPage()),);
                   },
                 ),
               ]
