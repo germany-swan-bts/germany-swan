@@ -36,17 +36,21 @@ class PageBody extends StatelessWidget {
       child: ListView(
         //padding: const EdgeInsets.all(8),
         children: <Widget>[
-          GestureDetector(
-            onTap: () => {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SecondPage()),)
-            },
-            child: Image.asset(
-                'images/Castle.jpg',
-                fit: BoxFit.fill,
-            ),
+          Image.asset(
+              'images/Castle.jpg',
+              fit: BoxFit.fill,
           ),
+          // GestureDetector(
+          //   onTap: () => {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(builder: (context) => SecondPage()),)
+          //   },
+          //   child: Image.asset(
+          //       'images/Castle.jpg',
+          //       fit: BoxFit.fill,
+          //   ),
+          // ),
           // Text(
           //     '從巴黎到聖米歇爾山，讓你直達不轉車 !!',
           //     textAlign: TextAlign.center,
