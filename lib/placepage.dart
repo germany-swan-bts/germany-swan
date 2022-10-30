@@ -28,6 +28,16 @@ class _PlacePageState extends State<PlacePage> {
 class PageBody extends StatelessWidget {
   // final String country;
   // HomePage(this.country);
+  TextEditingController refCodeController = new TextEditingController();
+  StatefulWidget NavigateToDifferentPricePageByReferralCode(){
+    print(refCodeController.text);
+    if(refCodeController.text == 'BTS888'){
+      return SecondDiscountPage();
+    }
+    else{
+      return SecondPage();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,17 +50,13 @@ class PageBody extends StatelessWidget {
               'images/Castle.jpg',
               fit: BoxFit.fill,
           ),
-          // GestureDetector(
-          //   onTap: () => {
-          //     Navigator.push(
-          //       context,
-          //       MaterialPageRoute(builder: (context) => SecondPage()),)
-          //   },
-          //   child: Image.asset(
-          //       'images/Castle.jpg',
-          //       fit: BoxFit.fill,
-          //   ),
-          // ),
+          TextFormField(
+            controller: refCodeController,
+            decoration: const InputDecoration(
+              border: UnderlineInputBorder(),
+              labelText: '輸入：折扣碼',
+            ),
+          ),
           // Text(
           //     '從巴黎到聖米歇爾山，讓你直達不轉車 !!',
           //     textAlign: TextAlign.center,
@@ -97,21 +103,10 @@ class PageBody extends StatelessWidget {
                 ElevatedButton(
                   child: Text('立刻購買'),
                   onPressed: () {
+
                     Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => SecondPage()),);
-                  },
-                ),
-              ]
-          ),
-          Column(
-              children: <Widget>[
-                ElevatedButton(
-                  child: Text('折扣立刻購買'),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SecondDiscountPage()),);
+                        MaterialPageRoute(builder: (context) => NavigateToDifferentPricePageByReferralCode()));
                   },
                 ),
               ]

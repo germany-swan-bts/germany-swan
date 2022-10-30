@@ -29,6 +29,7 @@ class PageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('Non-DiscountPageShow');
     return Center(
       //列表元件
       child: ListView(

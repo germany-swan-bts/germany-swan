@@ -11,6 +11,7 @@ class SecondDiscountPage extends StatefulWidget {
 class _SecondDiscountPageState extends State<SecondDiscountPage> {
   @override
   Widget build(BuildContext context) {
+    print('DiscountPageShow');
     return MaterialApp(
         home: Scaffold(
           appBar: AppBar(
