@@ -7,6 +7,13 @@ class PlacePage extends StatefulWidget {
 }
 
 class _PlacePageState extends State<PlacePage> {
+  // String country = '';
+  //
+  // changeCountry(_country) {
+  //   setState(() {
+  //     country = _country;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +32,11 @@ class _PlacePageState extends State<PlacePage> {
 }
 
 class HomePage extends StatelessWidget {
+  // final String country;
+  // HomePage(this.country);
+
   //列表集合資料
-  List<Widget> list = <Widget>[
+  List<Widget> listview = <Widget>[
     Image.asset(
       'images/Castle.jpg',
       fit: BoxFit.fill
@@ -38,24 +48,30 @@ class HomePage extends StatelessWidget {
     ),
     ListTile(
       title: Text(
-        '德國',
+        '尼斯郵輪半日遊/',
         style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20.0),
       ),
+      subtitle: Text('20221225'),
       leading: Icon(
         Icons.location_on,
         color: HexColor("069d94"),
       ),
     ),
-    ListTile(
-      title: Text(
-        '法國',
-        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20.0),
-      ),
-      leading: Icon(
-        Icons.location_on,
-        color: HexColor("069d94"),
-      ),
+    Text(
+        '車票資訊',
+        textAlign: TextAlign.center,
+        style: TextStyle(height:2, fontSize: 15, fontWeight: FontWeight.bold)
     ),
+    Column(
+        children: <Widget>[
+          ElevatedButton(
+            child: Text('立刻購買'),
+            onPressed: () {
+              //changeCountry('country');
+            },
+          ),
+        ]
+    )
   ];
 
   @override
@@ -63,7 +79,8 @@ class HomePage extends StatelessWidget {
     return Center(
       //列表元件
       child: ListView(
-        children: list,
+        //padding: const EdgeInsets.all(8),
+        children: listview,
       ),
     );
   }
