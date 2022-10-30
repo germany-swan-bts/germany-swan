@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 // Import the firebase_core plugin
-import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 //Import firestore database
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FireBase
 {
   var country = ['French','Spain','Belgium'];
   var travelView = ['NewSwanCastle','Hell','Heaven'];
+
   List<String> get GetCountry{
     return country;
   }
