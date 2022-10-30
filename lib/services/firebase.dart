@@ -7,4 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class FireBase
 {
   var country = ['French','Spain','Belgium'];
+  List<String> get GetCountry{
+    return country;
+  }
 }

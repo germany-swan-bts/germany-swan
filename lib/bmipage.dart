@@ -4,6 +4,8 @@ import 'package:bmi_calculator_app_flutter/theame.dart';
 import 'dart:async';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import 'services/firebase.dart';
+
 class BmiPage extends StatefulWidget {
   @override
   _BmiPageState createState() => _BmiPageState();
@@ -128,13 +130,17 @@ class _BmiPageState extends State<BmiPage> {
             ),
           ),
           InkWell(
-            onTap: () => Navigator.push(
+            onTap: (){
+              print("123");
+              print(FireBase().country);
+              Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => ResultPage(
-                      height: height,
-                      weight: weight,
-                    ))),
+                builder: (context) => ResultPage(
+                  height: height,
+                  weight: weight,
+                )));
+          },
             child: Container(
               color: primaryButtonColor,
               margin: EdgeInsets.only(top: 10.0),
