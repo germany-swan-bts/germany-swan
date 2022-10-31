@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator_app_flutter/theame.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import 'secondpage.dart';
 import 'seconddiscountpage.dart';
 
@@ -41,7 +42,14 @@ class PageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return GestureDetector(
+      // 使空白處可以點擊
+      behavior: HitTestBehavior.translucent,
+      // 點擊後失去當前的Focus(request一個空的Focus給它)
+      onTap: () {
+        FocusScope.of(context).requestFocus(FocusNode());
+        refCodeController.clear();
+      },
       //列表元件
       child: ListView(
         //padding: const EdgeInsets.all(8),
@@ -98,22 +106,74 @@ class PageBody extends StatelessWidget {
           //     textAlign: TextAlign.start,
           //     style: TextStyle(height:1.5, fontSize: 15)
           // ),
-          Column(
+          Row (
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                ElevatedButton(
-                  child: Text('立刻購買'),
-                  onPressed: () {
+                Wrap (
+                    spacing: 20,
+                    children: <Widget>[
+                      ElevatedButton(
+                        child: Text('其他景點'),
+                        onPressed: () {
 
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => NavigateToDifferentPricePageByReferralCode()));
-                  },
-                ),
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CommonWebView('https://germany-swan-bts.github.io/suggestion')));
+                        },
+                      ),
+                      ElevatedButton(
+                        child: Text('立刻購買'),
+                        onPressed: () {
+
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => NavigateToDifferentPricePageByReferralCode()));
+                        },
+                      ),
+                    ]
+                )
               ]
           ),
+
         ],
       ),
     );
   }
 }
+
+class CommonWebView extends StatelessWidget {
+  String url;
+  CommonWebView(this.url);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('POIs'),
+        ),
+        body: Builder(builder: (BuildContext context) {
+          return WebView(
+            initialUrl: url,
+            javascriptMode: JavascriptMode.unrestricted,
+            navigationDelegate: (NavigationRequest request) {
+              if (request.url.startsWith('https://www.youtube.com/')) {
+                print('blocking navigation to $request}');
+                return NavigationDecision.prevent;
+              }
+              print('allowing navigation to $request');
+              return NavigationDecision.navigate;
+            },
+            onPageStarted: (String url) {
+              print('Page started loading: $url');
+            },
+            onPageFinished: (String url) {
+              print('Page finished loading: $url');
+            },
+            gestureNavigationEnabled: true,
+          );
+        }));
+  }
+}
+
 
