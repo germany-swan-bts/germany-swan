@@ -3,12 +3,11 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:bmi_calculator_app_flutter/resultpage.dart';
-import 'package:bmi_calculator_app_flutter/theame.dart';
+import 'resultpage.dart';
+import 'theame.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:crypto/crypto.dart';
 import 'package:http/http.dart' as http;
-import 'package:meta/meta.dart';
 
 class BmiPage extends StatefulWidget {
   @override
@@ -83,23 +82,29 @@ class _BmiPageState extends State<BmiPage> {
             builder: (context) => CommonWebView('https://buy.stripe.com/test_bIY28A98F42AaxWbII')));
   }
 
-  @override
-  Widget build(BuildContext context) {
+  call(){
     var client  =  GrailApiClient(
         httpClient: http.Client(),
         baseUrl: "http://alpha.api.g2rail.com",
         apiKey: "fa656e6b99d64f309d72d6a8e7284953",
         secret: "9a52b1f7-7c96-4305-8569-1016a55048bc");
-    var asyncKey = client.getSolutions("BERLIN", "FRANKFURT", "2022-10-31", "10:00", 1, 0);
-    print(asyncKey);
 
+    client.getSolutions("PARIS", "ST_LV5236GZ", "2022-12-12", "10:00", 2, 0)
+      .then((asyncKey) => {
+          print('asyncKey Loop: ' + asyncKey['async'].toString()),//jsonDecode(jsonEncode(asyncKey).toString())['async'].toString()
+          client.getAsyncResult(asyncKey['async'].toString())
+              .then((solution) => print("TEST TEST "+ solution.toString()))
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       color: secondary,
       child: Column(
         children: <Widget>[
           AppBar(
-            // title: Text("新天鵝堡"),
-            title: Text(asyncKey.toString()),
+             title: Text("新天鵝堡"),
             elevation: 0,
             backgroundColor: Colors.transparent,
           ),
@@ -134,7 +139,7 @@ class _BmiPageState extends State<BmiPage> {
           ),
           InkWell(
             onTap: () {
-              inform();
+              call();
             },
             child: Container(
               color: primaryButtonColor,
@@ -252,7 +257,6 @@ class GrailApiClient {
     if (solutionResponse.statusCode != 200) {
       throw Exception('error getting solutions');
     }
-
     final solutionsJson = jsonDecode(solutionResponse.body);
 
     return solutionsJson;

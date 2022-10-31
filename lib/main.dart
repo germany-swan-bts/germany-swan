@@ -5,11 +5,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-// import 'bmipage.dart';
+import 'BmiPage.dart';
 import 'package:crypto/crypto.dart';
 import 'package:http/http.dart' as http;
-import 'package:meta/meta.dart';
- 
+
 void main() => runApp(MyApp());
  
 class MyApp extends StatelessWidget {
@@ -31,7 +30,7 @@ class MyApp extends StatelessWidget {
 }
 
 class CommonWebView extends StatelessWidget {
-  String url;
+  final String url;
   CommonWebView(this.url);
 
   final Completer<WebViewController> _controller =
@@ -39,20 +38,6 @@ class CommonWebView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var client  =  GrailApiClient(
-        httpClient: http.Client(),
-        baseUrl: "http://alpha.api.g2rail.com",
-        apiKey: "fa656e6b99d64f309d72d6a8e7284953",
-        secret: "9a52b1f7-7c96-4305-8569-1016a55048bc");
-    client.getSolutions("MILANO", "ROMA", "2022-10-31", "10:00", 1, 0)
-    .then((asyncKey) => {
-
-      for (int i = 0; i < 15; i++) {
-        print(asyncKey.toString());
-          client.getAsyncResult(key.toString()).then((solution) => print("TEST TEST "+ solution.toString()))
-      }
-
-    });
 
     return Scaffold(
         appBar: AppBar(
@@ -92,11 +77,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // final _textControler = new TextEditingController();
+  // final _textController = new TextEditingController();
 
   // @override
   // void dispose() {
-  //   _textControler.dispose();
+  //   _textController.dispose();
   //   super.dispose();
   // }
 
@@ -112,7 +97,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: inform()
+        body: BmiPage()
       );
   }
 }
